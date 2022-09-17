@@ -45,7 +45,7 @@ type Message struct {
 	MsgInfo      msgInfo `json:"msg-info"`
 	MsgType      string  `json:"msg-type"`
 	Path         string  `json:"path"`
-	ResponseTime int     `json:"response_time"`
+	ResponseTime float64 `json:"response_time"`
 	Tag          string  `json:"tag"`
 	UserId       string  `json:"user-id"`
 }

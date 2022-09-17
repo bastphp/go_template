@@ -1,21 +1,26 @@
 package initialize
 
 import (
-	"fmt"
-	"github.com/elastic/go-elasticsearch/v7"
+	"context"
+	"github.com/olivere/elastic/v7"
 	"kuke_logger/global"
+	"log"
 )
 
 func Elasticsearch() {
 	esCfg := global.GVA_CONFIG.Elasticsearch
-	config := elasticsearch.Config{
-		Addresses: esCfg.Addr,
-		Username:  esCfg.UserName,
-		Password:  esCfg.Password,
-	}
-	client, err := elasticsearch.NewClient(config)
+	ctx := context.Background()
+	client, err := elastic.NewClient(
+		elastic.SetURL(esCfg.Host),
+		elastic.SetSniff(false),
+	)
 	if err != nil {
-		fmt.Printf(err.Error())
+		log.Printf("esclientError:%s\n", err.Error())
 	}
+	info, code, err := client.Ping(esCfg.Host).Do(ctx)
+	if err != nil {
+		log.Printf("esPingError:%s\n", err.Error())
+	}
+	log.Printf("Elasticsearch returned with code %d and version %s\n", code, info.Version.Number)
 	global.GVA_ES = client
 }
