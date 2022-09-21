@@ -12,6 +12,7 @@ func Elasticsearch() {
 	ctx := context.Background()
 	client, err := elastic.NewClient(
 		elastic.SetURL(esCfg.Host),
+		elastic.SetBasicAuth(esCfg.UserName, esCfg.Password),
 		elastic.SetSniff(false),
 	)
 	if err != nil {

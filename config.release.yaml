@@ -2,7 +2,7 @@ system:
   addr: 80
 
 elasticsearch:
-  host: 'http://elasticsearch.logging.svc.cluster.local:9200'
-  user-name: 'test'
+  host: 'http://elasticsearch:9200'
+  user-name: ''
   password: ''
 

@@ -13,6 +13,7 @@ type server interface {
 func RunWindowsServer() {
 	initialize.Elasticsearch()
 	Router := initialize.Routers()
+	initialize.Xxl(Router)
 	address := fmt.Sprintf(":%d", global.GVA_CONFIG.System.Addr)
 	fmt.Printf(address)
 	//address := ":80"

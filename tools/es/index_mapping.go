@@ -50,9 +50,16 @@ func (mt *MappingTool) LogMappingTmp() string {
 }`
 }
 
-func (mt *MappingTool) GetIndexName(msgInfo string) string {
-	timeObj := time.Now()
-	return "k8s-log-" + msgInfo + "-" + timeObj.Format("01-02")
+func (mt *MappingTool) GetIndexName(msgInfo string, day string) string {
+	if day == "" {
+		timeObj := time.Now()
+		return "k8s-log-" + msgInfo + "-" + timeObj.Format("01-02")
+	} else {
+		timeObj, _ := time.ParseInLocation("2006-01-02", time.Now().Format("2006-01-02"), time.Local)
+		addTime := timeObj.AddDate(0, 0, 1)
+		return "k8s-log-" + msgInfo + "-" + addTime.Format("01-02")
+	}
+
 }
 
 func (mt *MappingTool) InitMapping(esIndexName string, esTypeName string, typeMapping string) error {

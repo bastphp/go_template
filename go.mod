@@ -3,16 +3,18 @@ module kuke_logger
 go 1.18
 
 require (
-	github.com/elastic/go-elasticsearch/v7 v7.17.1
 	github.com/fsnotify/fsnotify v1.5.4
 	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
 	github.com/gin-gonic/gin v1.8.1
+	github.com/gin-middleware/xxl-job-executor v1.0.0
 	github.com/olivere/elastic/v7 v7.0.32
 	github.com/spf13/viper v1.13.0
+	github.com/xxl-job/xxl-job-executor-go v1.1.0
 )
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
+	github.com/go-basic/ipv4 v1.0.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.10.0 // indirect
