@@ -6,3 +6,7 @@ elasticsearch:
   user-name: ''
   password: ''
 
+xxl:
+  XXL_JOB_ADMIN_ADDRESS: 'http://xxl-job-admin.kukejs-dev.svc.cluster.local/xxl-job-admin'
+  XXL_JOB_APP_NAME: 'kuke-logger-dev'
+
