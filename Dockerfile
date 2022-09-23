@@ -8,10 +8,10 @@ RUN go env -w GO111MODULE=on \
     && go env \
     && go mod tidy \
     && go build  ./cmd/main.go \
-    && chmod +x main \
-	&& apk -U upgrade \
-	&& apk add tzdata \
-	&& cp /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
+    && chmod +x main
+#	&& apk -U upgrade \
+#	&& apk add tzdata \
+#	&& cp /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
 
 EXPOSE 80
 ENTRYPOINT ["./main"]
