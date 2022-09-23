@@ -36,7 +36,7 @@ func (ct *CreateTool) InES(indexName string, logs request.LogRequest) string {
 		ResponseTime: logs.Messages.ResponseTime,
 		Tag:          logs.Messages.Tag,
 		UserId:       logs.Messages.UserId,
-		TimeStamp:    time.Now().Format("2006-01-02 15:01:05.999"),
+		TimeStamp:    time.Now().Format("2006-01-02 15:01:05"),
 	}
 	res, err := global.GVA_ES.Index().Index(indexName).BodyJson(msg).Do(context.Background())
 	if err != nil {
