@@ -13,7 +13,9 @@ type CreateTool struct {
 }
 
 func (ct *CreateTool) InES(indexName string, logs request.LogRequest) string {
-	timeStamp := time.Now().Format("2006-01-02 15:01:05")
+	now := time.Now()
+	h, _ := time.ParseDuration("-1h")
+	timeStamp := now.Add(8 * h).Format("2006-01-02 15:01:05")
 	fmt.Println(timeStamp)
 	msg := request.LogMapping{
 		KkRequestId: logs.Messages.KkRequestId,
