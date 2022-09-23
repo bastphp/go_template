@@ -14,6 +14,7 @@ type MappingTool struct {
 func (mt *MappingTool) LogMappingTmp() string {
 	return `{"mappings":{
 				"properties":{
+                    "@timestamp": {"type":"date", "format":"yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||strict_date_optional_time"}
 					"kk-request-id": {"type":"keyword"},
 					"local-time": {"type":"date","format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||strict_date_optional_time"},
 					"msg":  {"type":"text"},

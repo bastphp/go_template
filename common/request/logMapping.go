@@ -28,4 +28,5 @@ type LogMapping struct {
 	ResponseTime float64       `json:"response_time"`
 	Tag          string        `json:"tag"`
 	UserId       string        `json:"user-id"`
+	TimeStamp    string        `json:"@timestamp"`
 }
