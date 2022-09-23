@@ -2,6 +2,7 @@ package es
 
 import (
 	"context"
+	"fmt"
 	"kuke_logger/common/request"
 	"kuke_logger/global"
 	"log"
@@ -11,6 +12,7 @@ type CreateTool struct {
 }
 
 func (ct *CreateTool) InES(indexName string, logs request.LogRequest) string {
+	fmt.Println(logs.Time)
 	msg := request.LogMapping{
 		KkRequestId: logs.Messages.KkRequestId,
 		Kubernetes: request.KubernetesLog{
@@ -35,6 +37,7 @@ func (ct *CreateTool) InES(indexName string, logs request.LogRequest) string {
 		ResponseTime: logs.Messages.ResponseTime,
 		Tag:          logs.Messages.Tag,
 		UserId:       logs.Messages.UserId,
+		TimeStamp:    logs.Time,
 	}
 	res, err := global.GVA_ES.Index().Index(indexName).BodyJson(msg).Do(context.Background())
 	if err != nil {
