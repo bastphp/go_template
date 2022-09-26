@@ -29,7 +29,10 @@ func (lc *CreateService) CreateLog(log []request.LogRequest) (err error) {
 			break
 		default:
 			fmt.Println(value.String())
-			notice.NoticeService.InES("notice", value)
+			if value.Messages.Msg != "" && value.Messages.LocalTime != "" {
+				notice.NoticeService.InES("notice", value)
+			}
+
 		}
 	}
 	return nil
