@@ -28,7 +28,8 @@ func (lc *CreateService) CreateLog(log []request.LogRequest) (err error) {
 			notice.NoticeService.InES("notice", value)
 			break
 		default:
-			fmt.Printf("所有日志")
+			fmt.Println(value.String())
+			notice.NoticeService.InES("notice", value)
 		}
 	}
 	return nil

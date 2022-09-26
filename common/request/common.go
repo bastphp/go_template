@@ -1,5 +1,11 @@
 package request
 
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+)
+
 type Labels struct {
 	Layer   string `json:"k8s.kuboard.cn/layer"`
 	Name    string `json:"k8s.kuboard.cn/name"`
@@ -48,4 +54,17 @@ type Message struct {
 	ResponseTime float64 `json:"response_time"`
 	Tag          string  `json:"tag"`
 	UserId       string  `json:"user-id"`
+}
+
+func (receiver *LogRequest) String() string {
+	b, err := json.Marshal(*receiver)
+	if err != nil {
+		fmt.Sprintf("%+v", *receiver)
+	}
+	var out bytes.Buffer
+	err = json.Indent(&out, b, "", " ")
+	if err != nil {
+		fmt.Sprintf("%+v", *receiver)
+	}
+	return out.String()
 }
