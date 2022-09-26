@@ -18,10 +18,10 @@ func (lc *CreateService) CreateLog(log []request.LogRequest) (err error) {
 		case "INFO", "info":
 			info.InfoService.InES("info", value)
 			break
-		case "error", "ERROR":
+		case "error", "ERROR", "ERR":
 			logerror.ErrorService.InES("error", value)
 			break
-		case "warning", "WARNING":
+		case "warning", "WARNING", "WARN":
 			warning.WarningService.InES("warning", value)
 			break
 		case "notice", "NOTICE":
