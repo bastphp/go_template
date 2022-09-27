@@ -14,6 +14,9 @@ type CreateService struct {
 
 func (lc *CreateService) CreateLog(log []request.LogRequest) (err error) {
 	for _, value := range log {
+		if value.Messages.Path == "/health" {
+			continue
+		}
 		switch value.Messages.MsgType {
 		case "INFO", "info":
 			info.InfoService.InES("info", value)
