@@ -19,21 +19,21 @@ func (lc *CreateService) CreateLog(log []request.LogRequest) (err error) {
 		}
 		switch value.Messages.MsgType {
 		case "INFO", "info":
-			info.InfoService.InES("info", value)
+			go info.InfoService.InES("info", value)
 			break
 		case "error", "ERROR", "ERR":
-			logerror.ErrorService.InES("error", value)
+			go logerror.ErrorService.InES("error", value)
 			break
 		case "warning", "WARNING", "WARN":
-			warning.WarningService.InES("warning", value)
+			go warning.WarningService.InES("warning", value)
 			break
 		case "notice", "NOTICE":
-			notice.NoticeService.InES("notice", value)
+			go notice.NoticeService.InES("notice", value)
 			break
 		default:
 			fmt.Println(value.String())
 			if value.Messages.Msg != "" && value.Messages.LocalTime != "" {
-				notice.NoticeService.InES("notice", value)
+				go notice.NoticeService.InES("notice", value)
 			}
 
 		}
