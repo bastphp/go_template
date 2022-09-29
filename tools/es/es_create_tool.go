@@ -32,7 +32,7 @@ func (ct *CreateTool) InES(indexName string, logs request.LogRequest) string {
 			Header:   logs.Messages.MsgInfo.Header,
 			Type:     logs.Messages.MsgInfo.Type,
 		},
-		LocalTime:    strings.TrimSuffix(logs.Messages.LocalTime, " +08:00"),
+		LocalTime:    strings.TrimSuffix(strings.TrimSuffix(logs.Messages.LocalTime, " +0800"), " +08:00"),
 		MsgType:      logs.Messages.MsgType,
 		Path:         logs.Messages.Path,
 		ResponseTime: logs.Messages.ResponseTime,
