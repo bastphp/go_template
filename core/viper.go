@@ -6,9 +6,9 @@ import (
 	"github.com/fsnotify/fsnotify"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
-	"kuke_logger/core/internal"
-	"kuke_logger/global"
 	"os"
+	"template/core/internal"
+	"template/global"
 )
 
 func Viper(path ...string) *viper.Viper {

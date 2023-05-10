@@ -1,9 +1,7 @@
 package core
 
 import (
-	"fmt"
-	"kuke_logger/global"
-	"kuke_logger/initialize"
+	"template/initialize"
 )
 
 type server interface {
@@ -11,13 +9,8 @@ type server interface {
 }
 
 func RunWindowsServer() {
-	initialize.Elasticsearch()
 	//initialize.Kafka("fluent-bit")
 	Router := initialize.Routers()
-	initialize.Xxl(Router)
-	address := fmt.Sprintf(":%d", global.GVA_CONFIG.System.Addr)
-	fmt.Printf(address)
-	//address := ":80"
-	s := initServer(address, Router)
+	s := initServer(Router)
 	s.ListenAndServe()
 }

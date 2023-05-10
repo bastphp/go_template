@@ -1,6 +1,6 @@
 package main
 
-import "kuke_logger/core"
+import "template/core"
 
 func main() {
 	core.Viper()

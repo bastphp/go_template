@@ -1,10 +1,8 @@
 system:
   addr: 80
-
-elasticsearch:
-  host: 'http://elasticsearch.logging.svc.cluster.local:9200'
-  user-name: ''
-  password: ''
+  reader_time_out: 20
+  writer_time_out: 20
+  max_params: 2
 
 xxl:
   XXL_JOB_ADMIN_ADDRESS: 'http://xxl-job-admin.kukejs-test.svc.cluster.local/xxl-job-admin'
